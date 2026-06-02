@@ -1,0 +1,282 @@
+<!DOCTYPE html>
+<html lang="pt-BR">
+<head>
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1.0">
+<title>Carolina & Denis — Lista de Presentes</title>
+<link href="https://fonts.googleapis.com/css2?family=Cormorant+Garamond:wght@300;400;600&family=DM+Sans:wght@300;400;500&display=swap" rel="stylesheet">
+<style>
+*,*::before,*::after{box-sizing:border-box;margin:0;padding:0}
+:root{
+  --olive:#6b7a52;--olive-light:#8a9b6a;--olive-bg:#f2f4ed;
+  --olive-border:#c5ceb0;--black:#141414;--white:#ffffff;
+  --gray:#848484;--bg:#f9f9f7;--border:#e4e4e0;
+}
+body{font-family:'DM Sans',sans-serif;background:var(--bg);color:var(--black);min-height:100vh}
+
+.hero{background:var(--white);text-align:center;padding:80px 24px 64px;border-bottom:1px solid var(--border)}
+.mono-circle{width:90px;height:90px;background:var(--black);border-radius:50%;display:flex;align-items:center;justify-content:center;margin:0 auto 36px;overflow:hidden}
+.mono-circle img{width:66px;height:66px;object-fit:contain;filter:invert(1) brightness(1.8)}
+.date-label{font-size:10px;font-weight:500;letter-spacing:5px;color:var(--olive);text-transform:uppercase;margin-bottom:22px}
+.names{font-family:'Cormorant Garamond',serif;font-size:clamp(46px,10vw,76px);font-weight:300;line-height:1;letter-spacing:3px;color:var(--black)}
+.amp{font-family:'Cormorant Garamond',serif;font-size:clamp(20px,4vw,30px);font-weight:300;color:var(--olive);display:block;margin:10px 0}
+.hero-desc{font-size:14px;font-weight:300;color:var(--gray);margin-top:30px;line-height:1.9;max-width:500px;margin-left:auto;margin-right:auto}
+.hero-desc strong{color:var(--black);font-weight:500}
+.pill{display:inline-block;margin-top:26px;background:var(--olive-bg);color:var(--olive);font-size:10px;font-weight:500;letter-spacing:3px;text-transform:uppercase;padding:10px 28px;border-radius:100px;border:1px solid var(--olive-border)}
+
+.section{padding:64px 24px;max-width:800px;margin:0 auto}
+.sec-head{text-align:center;margin-bottom:16px}
+.sec-title{font-family:'Cormorant Garamond',serif;font-size:32px;font-weight:400;color:var(--black)}
+.sec-sub{font-size:11px;color:var(--gray);letter-spacing:2px;text-transform:uppercase;margin-top:8px}
+.divider{display:flex;align-items:center;gap:14px;max-width:260px;margin:28px auto 44px}
+.divider::before,.divider::after{content:'';flex:1;height:1px;background:var(--border)}
+.dot{width:4px;height:4px;background:var(--olive);border-radius:50%}
+
+.gifts-grid{display:grid;grid-template-columns:repeat(auto-fill,minmax(220px,1fr));gap:14px}
+.gift-card{background:var(--white);border:1px solid var(--border);border-radius:14px;padding:28px 20px 24px;text-align:center;transition:border-color .2s,transform .2s}
+.gift-card:hover:not(.gifted){border-color:var(--olive-light);transform:translateY(-3px)}
+.gift-card.gifted{background:var(--olive-bg);border-color:var(--olive-border);opacity:.6}
+
+.icon-ring{width:44px;height:44px;border:1px solid var(--border);border-radius:50%;display:flex;align-items:center;justify-content:center;margin:0 auto 16px}
+.gift-card.gifted .icon-ring{display:none}
+.check-ring{width:44px;height:44px;background:var(--olive);border-radius:50%;display:none;align-items:center;justify-content:center;margin:0 auto 16px}
+.gift-card.gifted .check-ring{display:flex}
+
+.gift-val{font-family:'Cormorant Garamond',serif;font-size:32px;font-weight:600;color:var(--black);margin-bottom:4px}
+.gift-card.gifted .gift-val{color:var(--olive);text-decoration:line-through}
+.gift-qty{font-size:11px;color:var(--gray);letter-spacing:1px;text-transform:uppercase;margin-bottom:22px}
+.btn-present{background:var(--black);color:var(--white);font-family:'DM Sans',sans-serif;font-size:10px;font-weight:500;letter-spacing:2.5px;text-transform:uppercase;padding:11px 24px;border-radius:100px;border:none;cursor:pointer;transition:background .2s}
+.btn-present:hover{background:var(--olive)}
+.gift-card.gifted .btn-wrap{display:none}
+.gifted-txt{display:none;font-size:10px;color:var(--olive);letter-spacing:2px;text-transform:uppercase;font-weight:500}
+.gift-card.gifted .gifted-txt{display:block}
+
+.loading-state{text-align:center;padding:48px 24px;color:var(--gray);font-size:14px;letter-spacing:0.5px}
+.loading-dot{display:inline-block;width:6px;height:6px;background:var(--olive);border-radius:50%;margin:0 3px;animation:pulse 1.2s ease-in-out infinite}
+.loading-dot:nth-child(2){animation-delay:.2s}
+.loading-dot:nth-child(3){animation-delay:.4s}
+@keyframes pulse{0%,80%,100%{opacity:.2}40%{opacity:1}}
+
+.info{text-align:center;padding:0 24px 72px;max-width:600px;margin:0 auto}
+.info p{font-size:13px;color:var(--gray);line-height:2.2;font-weight:300;letter-spacing:0.3px}
+
+footer{background:var(--black);text-align:center;padding:44px 24px}
+footer .fn{font-family:'Cormorant Garamond',serif;font-size:24px;color:var(--white);font-weight:300;letter-spacing:3px;margin-bottom:10px}
+footer p{font-size:10px;color:rgba(255,255,255,0.4);letter-spacing:2px;text-transform:uppercase}
+
+.overlay{display:none;position:fixed;inset:0;background:rgba(0,0,0,0.5);z-index:100;align-items:center;justify-content:center;padding:20px}
+.overlay.open{display:flex}
+.modal{background:var(--white);border-radius:18px;padding:44px 32px 36px;max-width:400px;width:100%;text-align:center;position:relative}
+.modal-x{position:absolute;top:18px;right:20px;background:none;border:none;cursor:pointer;color:var(--gray);font-size:18px;font-family:'DM Sans',sans-serif}
+.modal-title{font-family:'Cormorant Garamond',serif;font-size:28px;font-weight:400;margin-bottom:6px}
+.modal-sub{font-size:12px;color:var(--gray);letter-spacing:0.3px;margin-bottom:24px}
+.modal-val{font-family:'Cormorant Garamond',serif;font-size:44px;font-weight:600;color:var(--black);margin-bottom:28px}
+.pix-box{background:var(--olive-bg);border:1px dashed var(--olive-border);border-radius:10px;padding:20px;margin-bottom:18px}
+.pix-lbl{font-size:10px;color:var(--olive);letter-spacing:3px;text-transform:uppercase;margin-bottom:8px}
+.pix-key{font-family:'DM Sans',sans-serif;font-size:13px;font-weight:500;color:var(--black);word-break:break-all}
+.pix-name{font-size:11px;color:var(--gray);margin-top:6px}
+.btn-copy{background:var(--black);color:var(--white);border:none;border-radius:100px;padding:13px 0;font-family:'DM Sans',sans-serif;font-size:11px;font-weight:500;letter-spacing:2px;text-transform:uppercase;cursor:pointer;width:100%;margin-bottom:14px;transition:background .2s}
+.btn-copy:hover{background:var(--olive)}
+.modal-note{font-size:12px;color:var(--gray);line-height:1.7;font-weight:300}
+.modal-confirm{display:none;flex-direction:column;align-items:center;gap:12px}
+.modal-confirm.show{display:flex}
+.confirm-icon{width:56px;height:56px;background:var(--olive-bg);border-radius:50%;display:flex;align-items:center;justify-content:center;margin-bottom:4px}
+.modal-confirm p{font-size:13px;color:var(--gray);line-height:1.7}
+
+.ico{width:20px;height:20px;stroke:var(--olive);stroke-width:1.4;fill:none;stroke-linecap:round;stroke-linejoin:round}
+.chk{width:16px;height:16px;stroke:#fff;stroke-width:2;fill:none;stroke-linecap:round;stroke-linejoin:round}
+</style>
+</head>
+<body>
+
+<section class="hero">
+  <div class="mono-circle"><img id="mono" alt="CD"></div>
+  <div class="date-label">19 · Setembro · 2026</div>
+  <div class="names">
+    CAROLINA
+    <span class="amp">&amp;</span>
+    DENIS
+  </div>
+  <p class="hero-desc">
+    Chegou a hora de vocês ajudarem a pagar a nossa lua de mel.<br>
+    Cada presente nos aproxima mais de dias inesquecíveis juntos.<br>
+    <strong>Obrigado por fazer parte dessa história.</strong>
+  </p>
+  <div class="pill">Lista de Presentes · Via PIX</div>
+</section>
+
+<div class="section">
+  <div class="sec-head">
+    <div class="sec-title">Escolha seu presente</div>
+    <div class="sec-sub">Cada valor, uma lembrança</div>
+  </div>
+  <div class="divider"><div class="dot"></div></div>
+  <div id="giftsGrid">
+    <div class="loading-state">
+      <span class="loading-dot"></span>
+      <span class="loading-dot"></span>
+      <span class="loading-dot"></span>
+    </div>
+  </div>
+</div>
+
+<div class="info">
+  <div class="divider"><div class="dot"></div></div>
+  <p>Sítio Recanto do Lago · Santo Amaro da Imperatriz, SC<br>
+  R. Maria Catarina Becker de Souza, 138 · 16h00<br>
+  19 de Setembro de 2026</p>
+</div>
+
+<footer>
+  <div class="fn">CAROLINA &amp; DENIS</div>
+  <p>19 · 09 · 2026 · com amor</p>
+</footer>
+
+<div class="overlay" id="overlay">
+  <div class="modal">
+    <button class="modal-x" onclick="closeModal()">✕</button>
+    <div id="modalContent">
+      <div class="modal-title">Presente confirmado</div>
+      <p class="modal-sub">Você escolheu contribuir com</p>
+      <div class="modal-val" id="mVal"></div>
+      <div class="pix-box">
+        <div class="pix-lbl">Chave PIX</div>
+        <div class="pix-key">f16b952a-6519-410d-be47-e5cb948f4313</div>
+        <div class="pix-name">Carolina Barbosa Moreira</div>
+      </div>
+      <button class="btn-copy" id="btnCopy" onclick="copyPix()">Copiar chave PIX</button>
+      <p class="modal-note">Após o envio, nos avise pelo WhatsApp. Ficamos muito felizes com cada presente.</p>
+    </div>
+    <div class="modal-confirm" id="modalConfirm">
+      <div class="confirm-icon">
+        <svg width="24" height="24" viewBox="0 0 24 24" fill="none" stroke="#6b7a52" stroke-width="1.8" stroke-linecap="round" stroke-linejoin="round"><path d="M22 11.08V12a10 10 0 1 1-5.93-9.14"/><polyline points="22 4 12 14.01 9 11.01"/></svg>
+      </div>
+      <div class="modal-title">Obrigado!</div>
+      <p>Seu presente foi registrado.<br>Não esqueça de nos avisar pelo WhatsApp depois de enviar o PIX.</p>
+    </div>
+  </div>
+</div>
+
+<script>
+const SUPABASE_URL = 'https://zpxudozqzrlzmdxmeuru.supabase.co';
+const SUPABASE_KEY = 'sb_publishable_darC0SlswQKl1E3h4lcIsg_dA_0ly98';
+const PIX_KEY = 'f16b952a-6519-410d-be47-e5cb948f4313';
+
+// Monogram
+document.getElementById('mono').src = 'data:image/jpeg;base64,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';
+
+const ICONS = {
+  diamond:`<svg class="ico" viewBox="0 0 24 24"><polygon points="12 2 22 9 12 22 2 9"/><polyline points="2 9 12 14 22 9"/></svg>`,
+  leaf:`<svg class="ico" viewBox="0 0 24 24"><path d="M17 8C8 10 5.9 16.17 3.82 22"/><path d="M17 8c0 8-5 12-14 14 1-7 5-12 14-14z"/></svg>`,
+  sun:`<svg class="ico" viewBox="0 0 24 24"><circle cx="12" cy="12" r="4"/><line x1="12" y1="2" x2="12" y2="4"/><line x1="12" y1="20" x2="12" y2="22"/><line x1="4.22" y1="4.22" x2="5.64" y2="5.64"/><line x1="18.36" y1="18.36" x2="19.78" y2="19.78"/><line x1="2" y1="12" x2="4" y2="12"/><line x1="20" y1="12" x2="22" y2="12"/><line x1="4.22" y1="19.78" x2="5.64" y2="18.36"/><line x1="18.36" y1="5.64" x2="19.78" y2="4.22"/></svg>`,
+  heart:`<svg class="ico" viewBox="0 0 24 24"><path d="M20.84 4.61a5.5 5.5 0 0 0-7.78 0L12 5.67l-1.06-1.06a5.5 5.5 0 0 0-7.78 7.78l1.06 1.06L12 21.23l7.78-7.78 1.06-1.06a5.5 5.5 0 0 0 0-7.78z"/></svg>`,
+  star:`<svg class="ico" viewBox="0 0 24 24"><polygon points="12 2 15.09 8.26 22 9.27 17 14.14 18.18 21.02 12 17.77 5.82 21.02 7 14.14 2 9.27 8.91 8.26 12 2"/></svg>`,
+  globe:`<svg class="ico" viewBox="0 0 24 24"><circle cx="12" cy="12" r="10"/><line x1="2" y1="12" x2="22" y2="12"/><path d="M12 2a15.3 15.3 0 0 1 4 10 15.3 15.3 0 0 1-4 10 15.3 15.3 0 0 1-4-10 15.3 15.3 0 0 1 4-10z"/></svg>`,
+};
+
+const ICON_LIST = ['diamond','leaf','sun','heart','star','globe'];
+const fmt = v => v.toLocaleString('pt-BR',{style:'currency',currency:'BRL'});
+
+let presentes = [];
+let currentId = null;
+
+async function fetchPresentes() {
+  const res = await fetch(`${SUPABASE_URL}/rest/v1/presentes?order=valor.asc`, {
+    headers: {
+      'apikey': SUPABASE_KEY,
+      'Authorization': `Bearer ${SUPABASE_KEY}`
+    }
+  });
+  return await res.json();
+}
+
+async function incrementar(id) {
+  const presente = presentes.find(p => p.id === id);
+  if (!presente) return false;
+  const res = await fetch(`${SUPABASE_URL}/rest/v1/presentes?id=eq.${id}`, {
+    method: 'PATCH',
+    headers: {
+      'apikey': SUPABASE_KEY,
+      'Authorization': `Bearer ${SUPABASE_KEY}`,
+      'Content-Type': 'application/json',
+      'Prefer': 'return=representation'
+    },
+    body: JSON.stringify({ quantidade_usada: presente.quantidade_usada + 1 })
+  });
+  return res.ok;
+}
+
+function renderGifts(data) {
+  const grid = document.getElementById('giftsGrid');
+  grid.className = 'gifts-grid';
+  grid.innerHTML = '';
+  data.forEach((p, i) => {
+    const rem = p.quantidade_total - p.quantidade_usada;
+    const gone = rem <= 0;
+    const icon = ICON_LIST[i % ICON_LIST.length];
+    const card = document.createElement('div');
+    card.className = 'gift-card' + (gone ? ' gifted' : '');
+    card.innerHTML = `
+      <div class="check-ring"><svg class="chk" viewBox="0 0 16 16"><path d="M3 8l4 4 6-6"/></svg></div>
+      <div class="icon-ring">${ICONS[icon]}</div>
+      <div class="gift-val">${fmt(p.valor)}</div>
+      <div class="gift-qty">${rem} de ${p.quantidade_total} disponíveis</div>
+      <div class="btn-wrap"><button class="btn-present" onclick="openModal(${p.id}, ${p.valor})">Presentear</button></div>
+      <div class="gifted-txt">Esgotado</div>
+    `;
+    grid.appendChild(card);
+  });
+}
+
+async function init() {
+  try {
+    presentes = await fetchPresentes();
+    renderGifts(presentes);
+  } catch(e) {
+    document.getElementById('giftsGrid').innerHTML = '<div class="loading-state">Erro ao carregar. Recarregue a página.</div>';
+  }
+}
+
+function openModal(id, valor) {
+  currentId = id;
+  document.getElementById('mVal').textContent = fmt(valor);
+  document.getElementById('modalContent').style.display = 'block';
+  document.getElementById('modalConfirm').className = 'modal-confirm';
+  document.getElementById('btnCopy').textContent = 'Copiar chave PIX';
+  document.getElementById('btnCopy').style.background = '';
+  document.getElementById('overlay').classList.add('open');
+}
+
+function closeModal() {
+  document.getElementById('overlay').classList.remove('open');
+  currentId = null;
+  // Refresh
+  init();
+}
+
+function copyPix() {
+  const btn = document.getElementById('btnCopy');
+  navigator.clipboard.writeText(PIX_KEY).then(async () => {
+    btn.textContent = 'Copiado!';
+    btn.style.background = 'var(--olive)';
+    // Register the gift
+    if (currentId) {
+      await incrementar(currentId);
+      currentId = null;
+      // Show confirmation
+      setTimeout(() => {
+        document.getElementById('modalContent').style.display = 'none';
+        document.getElementById('modalConfirm').className = 'modal-confirm show';
+      }, 800);
+    }
+  }).catch(() => { btn.textContent = PIX_KEY; });
+}
+
+document.getElementById('overlay').addEventListener('click', function(e) {
+  if (e.target === this) closeModal();
+});
+
+init();
+</script>
+</body>
+</html>
