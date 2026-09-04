@@ -49,51 +49,46 @@ body{font-family:'DM Sans',sans-serif;background:var(--bg);color:var(--black);mi
 .gifted-txt{display:none;font-size:10px;color:var(--olive);letter-spacing:2px;text-transform:uppercase;font-weight:500}
 .gift-card.gifted .gifted-txt{display:block}
 
-.loading-state{text-align:center;padding:48px 24px;color:var(--gray);font-size:14px;letter-spacing:0.5px}
+.loading-state{text-align:center;padding:48px 24px;color:var(--gray);font-size:14px}
 .loading-dot{display:inline-block;width:6px;height:6px;background:var(--olive);border-radius:50%;margin:0 3px;animation:pulse 1.2s ease-in-out infinite}
 .loading-dot:nth-child(2){animation-delay:.2s}
 .loading-dot:nth-child(3){animation-delay:.4s}
 @keyframes pulse{0%,80%,100%{opacity:.2}40%{opacity:1}}
 
 .info{text-align:center;padding:0 24px 72px;max-width:600px;margin:0 auto}
-.info p{font-size:13px;color:var(--gray);line-height:2.2;font-weight:300;letter-spacing:0.3px}
+.info p{font-size:13px;color:var(--gray);line-height:2.2;font-weight:300}
 
 footer{background:var(--black);text-align:center;padding:44px 24px}
 footer .fn{font-family:'Cormorant Garamond',serif;font-size:24px;color:var(--white);font-weight:300;letter-spacing:3px;margin-bottom:10px}
 footer p{font-size:10px;color:rgba(255,255,255,0.4);letter-spacing:2px;text-transform:uppercase}
 
-/* MODAL */
 .overlay{display:none;position:fixed;inset:0;background:rgba(0,0,0,0.5);z-index:100;align-items:center;justify-content:center;padding:20px}
 .overlay.open{display:flex}
 .modal{background:var(--white);border-radius:18px;padding:44px 32px 36px;max-width:420px;width:100%;text-align:center;position:relative;max-height:90vh;overflow-y:auto}
-.modal-x{position:absolute;top:18px;right:20px;background:none;border:none;cursor:pointer;color:var(--gray);font-size:18px;font-family:'DM Sans',sans-serif}
+.modal-x{position:absolute;top:18px;right:20px;background:none;border:none;cursor:pointer;color:var(--gray);font-size:18px}
 .modal-title{font-family:'Cormorant Garamond',serif;font-size:28px;font-weight:400;margin-bottom:6px}
-.modal-sub{font-size:12px;color:var(--gray);letter-spacing:0.3px;margin-bottom:24px}
+.modal-sub{font-size:12px;color:var(--gray);margin-bottom:24px}
 .modal-val{font-family:'Cormorant Garamond',serif;font-size:44px;font-weight:600;color:var(--black);margin-bottom:28px}
 
-/* STEPS */
 .steps{display:flex;justify-content:center;gap:8px;margin-bottom:28px}
 .step{width:8px;height:8px;border-radius:50%;background:var(--border);transition:background .3s}
 .step.active{background:var(--olive)}
 
-/* STEP 1 - PIX */
 .pix-box{background:var(--olive-bg);border:1px dashed var(--olive-border);border-radius:10px;padding:20px;margin-bottom:18px}
 .pix-lbl{font-size:10px;color:var(--olive);letter-spacing:3px;text-transform:uppercase;margin-bottom:8px}
-.pix-key{font-family:'DM Sans',sans-serif;font-size:13px;font-weight:500;color:var(--black);word-break:break-all}
-.pix-name{font-size:11px;color:var(--gray);margin-top:6px}
+.pix-code{font-family:'DM Sans',sans-serif;font-size:11px;color:var(--black);word-break:break-all;line-height:1.6}
+.pix-name{font-size:11px;color:var(--gray);margin-top:8px}
 .btn-copy{background:var(--black);color:var(--white);border:none;border-radius:100px;padding:13px 0;font-family:'DM Sans',sans-serif;font-size:11px;font-weight:500;letter-spacing:2px;text-transform:uppercase;cursor:pointer;width:100%;margin-bottom:14px;transition:background .2s}
 .btn-copy:hover{background:var(--olive)}
 .btn-copy.copied{background:var(--olive)}
-.modal-note{font-size:12px;color:var(--gray);line-height:1.7;font-weight:300;margin-bottom:20px}
+.modal-note{font-size:12px;color:var(--gray);line-height:1.7;margin-bottom:20px}
 .btn-next{background:var(--olive);color:var(--white);border:none;border-radius:100px;padding:13px 0;font-family:'DM Sans',sans-serif;font-size:11px;font-weight:500;letter-spacing:2px;text-transform:uppercase;cursor:pointer;width:100%;transition:background .2s;display:none}
 .btn-next.show{display:block}
 .btn-next:hover{background:var(--olive-light)}
 
-/* STEP 2 - UPLOAD */
 .upload-area{border:2px dashed var(--olive-border);border-radius:12px;padding:32px 20px;margin-bottom:18px;cursor:pointer;transition:border-color .2s,background .2s;position:relative}
 .upload-area:hover{border-color:var(--olive);background:var(--olive-bg)}
 .upload-area.has-file{border-color:var(--olive);background:var(--olive-bg)}
-.upload-icon{margin-bottom:12px}
 .upload-text{font-size:13px;color:var(--gray);line-height:1.6}
 .upload-text strong{color:var(--olive);font-weight:500}
 .upload-filename{font-size:12px;color:var(--olive);margin-top:8px;font-weight:500;display:none}
@@ -108,7 +103,6 @@ footer p{font-size:10px;color:rgba(255,255,255,0.4);letter-spacing:2px;text-tran
 .upload-progress{height:3px;background:var(--border);border-radius:100px;margin-bottom:16px;display:none}
 .upload-progress-bar{height:100%;background:var(--olive);border-radius:100px;width:0%;transition:width .3s}
 
-/* STEP 3 - SUCESSO */
 .modal-confirm{display:none;flex-direction:column;align-items:center;gap:12px}
 .modal-confirm.show{display:flex}
 .confirm-icon{width:64px;height:64px;background:var(--olive-bg);border-radius:50%;display:flex;align-items:center;justify-content:center;margin-bottom:8px}
@@ -137,10 +131,9 @@ footer p{font-size:10px;color:rgba(255,255,255,0.4);letter-spacing:2px;text-tran
     DENIS
   </div>
   <p class="hero-desc">
-    Chegou a hora de mostrar o QUANTO vocês nos amam hahaha 😅<br>
-    Alguns dão conselhos, outros dão presentes, 
-    os mais experientes fazem um PIX 😜 <br>
-    <strong>Obrigado por fazer parte dessa história </strong>
+    Chegou a hora de vocês ajudarem a pagar a nossa lua de mel.<br>
+    Cada presente nos aproxima mais de dias inesquecíveis juntos.<br>
+    <strong>Obrigado por fazer parte dessa história.</strong>
   </p>
   <div class="pill">Lista de Presentes · Via PIX</div>
 </section>
@@ -172,7 +165,6 @@ footer p{font-size:10px;color:rgba(255,255,255,0.4);letter-spacing:2px;text-tran
   <p>19 · 09 · 2026 · com amor</p>
 </footer>
 
-<!-- MODAL -->
 <div class="overlay" id="overlay">
   <div class="modal">
     <button class="modal-x" onclick="closeModal()">✕</button>
@@ -180,37 +172,36 @@ footer p{font-size:10px;color:rgba(255,255,255,0.4);letter-spacing:2px;text-tran
     <!-- STEP 1: PIX -->
     <div id="step1">
       <div class="steps">
-        <div class="step active" id="dot1"></div>
-        <div class="step" id="dot2"></div>
-        <div class="step" id="dot3"></div>
+        <div class="step active"></div>
+        <div class="step"></div>
+        <div class="step"></div>
       </div>
-      <div class="modal-title">Copie a chave PIX</div>
+      <div class="modal-title">Copie o código PIX</div>
       <p class="modal-sub">Você escolheu contribuir com</p>
       <div class="modal-val" id="mVal"></div>
       <div class="pix-box">
-        <div class="pix-lbl">Chave PIX</div>
-        <div class="pix-key">f16b952a-6519-410d-be47-e5cb948f4313</div>
-        <div class="pix-name">Carolina Barbosa Moreira</div>
+        <div class="pix-lbl">PIX Copia e Cola</div>
+        <div class="pix-code" id="pixCode"></div>
+        <div class="pix-name">Carolina Barbosa Moreira · valor já incluído</div>
       </div>
-      <button class="btn-copy" id="btnCopy" onclick="copyPix()">Copiar chave PIX</button>
-      <p class="modal-note">Após copiar e fazer o pagamento, clique em continuar para enviar o comprovante.</p>
+      <button class="btn-copy" id="btnCopy" onclick="copyPix()">Copiar código PIX</button>
+      <p class="modal-note">Cole no app do seu banco — o valor já vem preenchido automaticamente. Após pagar, clique em continuar.</p>
       <button class="btn-next" id="btnNext" onclick="goToStep2()">Já paguei, enviar comprovante</button>
     </div>
 
     <!-- STEP 2: UPLOAD -->
     <div id="step2" style="display:none">
       <div class="steps">
-        <div class="step" id="dot1b"></div>
-        <div class="step active" id="dot2b"></div>
-        <div class="step" id="dot3b"></div>
+        <div class="step"></div>
+        <div class="step active"></div>
+        <div class="step"></div>
       </div>
       <div class="modal-title">Envie o comprovante</div>
-      <p class="modal-sub" style="margin-bottom:24px">Faça o upload do comprovante de pagamento para confirmar seu presente.</p>
-
+      <p class="modal-sub" style="margin-bottom:24px">Faça o upload do comprovante para confirmar seu presente.</p>
       <div class="upload-area" id="uploadArea">
         <input type="file" id="fileInput" accept="image/*,.pdf" onchange="onFileSelect(event)">
         <div class="upload-default">
-          <div class="upload-icon">
+          <div style="margin-bottom:12px">
             <svg width="32" height="32" viewBox="0 0 24 24" fill="none" stroke="#c5ceb0" stroke-width="1.4" stroke-linecap="round" stroke-linejoin="round">
               <polyline points="16 16 12 12 8 16"/><line x1="12" y1="12" x2="12" y2="21"/>
               <path d="M20.39 18.39A5 5 0 0 0 18 9h-1.26A8 8 0 1 0 3 16.3"/>
@@ -220,11 +211,9 @@ footer p{font-size:10px;color:rgba(255,255,255,0.4);letter-spacing:2px;text-tran
         </div>
         <div class="upload-filename" id="uploadFilename"></div>
       </div>
-
       <div class="upload-progress" id="uploadProgress">
         <div class="upload-progress-bar" id="uploadProgressBar"></div>
       </div>
-
       <button class="btn-confirmar" id="btnConfirmar" onclick="confirmarPresente()" disabled>Confirmar presente</button>
     </div>
 
@@ -236,7 +225,7 @@ footer p{font-size:10px;color:rgba(255,255,255,0.4);letter-spacing:2px;text-tran
         </svg>
       </div>
       <div class="modal-title">Presente confirmado!</div>
-      <p>Recebemos seu comprovante e seu presente foi registrado com sucesso.<br>Muito obrigado por fazer parte do nosso dia especial.</p>
+      <p>Recebemos seu comprovante e seu presente foi registrado.<br>Muito obrigado por fazer parte do nosso dia especial.</p>
     </div>
   </div>
 </div>
@@ -244,7 +233,15 @@ footer p{font-size:10px;color:rgba(255,255,255,0.4);letter-spacing:2px;text-tran
 <script>
 const SUPABASE_URL = 'https://zpxudozqzrlzmdxmeuru.supabase.co';
 const SUPABASE_KEY = 'sb_publishable_darC0SlswQKl1E3h4lcIsg_dA_0ly98';
-const PIX_KEY = 'f16b952a-6519-410d-be47-e5cb948f4313';
+
+const PIX_CODES = {
+  150:  '00020126580014BR.GOV.BCB.PIX01360ccbc548-cdc6-4a5d-b177-b9622718d2555204000053039865406150.005802BR5924Carolina Barbosa Moreira6009SAO PAULO62140510xoXpJ9yJTK63047E45',
+  250:  '00020126580014BR.GOV.BCB.PIX01360ccbc548-cdc6-4a5d-b177-b9622718d2555204000053039865406250.005802BR5924Carolina Barbosa Moreira6009SAO PAULO62140510d7qbQjUPR763049405',
+  400:  '00020126580014BR.GOV.BCB.PIX01360ccbc548-cdc6-4a5d-b177-b9622718d2555204000053039865406400.005802BR5924Carolina Barbosa Moreira6009SAO PAULO62140510vgRF2CLykB6304900F',
+  550:  '00020126580014BR.GOV.BCB.PIX01360ccbc548-cdc6-4a5d-b177-b9622718d2555204000053039865406550.005802BR5924Carolina Barbosa Moreira6009SAO PAULO62140510Husuc6hdIc63044B47',
+  850:  '00020126580014BR.GOV.BCB.PIX01360ccbc548-cdc6-4a5d-b177-b9622718d2555204000053039865406850.005802BR5924Carolina Barbosa Moreira6009SAO PAULO62140510R1NR5dMWHh6304A21D',
+  1250: '00020126580014BR.GOV.BCB.PIX01360ccbc548-cdc6-4a5d-b177-b9622718d25552040000530398654071250.005802BR5924Carolina Barbosa Moreira6009SAO PAULO62140510pHCkxLJl3d6304FD3F',
+};
 
 const ICONS = {
   diamond:`<svg class="ico" viewBox="0 0 24 24"><polygon points="12 2 22 9 12 22 2 9"/><polyline points="2 9 12 14 22 9"/></svg>`,
@@ -259,6 +256,7 @@ const ICON_LIST = ['diamond','leaf','sun','heart','star','globe'];
 const fmt = v => v.toLocaleString('pt-BR',{style:'currency',currency:'BRL'});
 let presentes = [];
 let currentId = null;
+let currentValor = null;
 let selectedFile = null;
 
 async function fetchPresentes() {
@@ -312,12 +310,14 @@ async function init() {
 
 function openModal(id, valor) {
   currentId = id;
+  currentValor = valor;
   selectedFile = null;
   document.getElementById('mVal').textContent = fmt(valor);
+  document.getElementById('pixCode').textContent = PIX_CODES[valor] || '';
   document.getElementById('step1').style.display = 'block';
   document.getElementById('step2').style.display = 'none';
   document.getElementById('step3').className = 'modal-confirm';
-  document.getElementById('btnCopy').textContent = 'Copiar chave PIX';
+  document.getElementById('btnCopy').textContent = 'Copiar código PIX';
   document.getElementById('btnCopy').className = 'btn-copy';
   document.getElementById('btnNext').className = 'btn-next';
   document.getElementById('uploadArea').className = 'upload-area';
@@ -331,16 +331,18 @@ function openModal(id, valor) {
 function closeModal() {
   document.getElementById('overlay').classList.remove('open');
   currentId = null;
+  currentValor = null;
   init();
 }
 
 function copyPix() {
+  const code = PIX_CODES[currentValor];
   const btn = document.getElementById('btnCopy');
-  navigator.clipboard.writeText(PIX_KEY).then(() => {
+  navigator.clipboard.writeText(code).then(() => {
     btn.textContent = 'Copiado!';
     btn.className = 'btn-copy copied';
     document.getElementById('btnNext').className = 'btn-next show';
-  }).catch(() => { btn.textContent = PIX_KEY; });
+  }).catch(() => { btn.textContent = code; });
 }
 
 function goToStep2() {
@@ -362,47 +364,28 @@ async function confirmarPresente() {
   const btn = document.getElementById('btnConfirmar');
   btn.disabled = true;
   btn.textContent = 'Enviando...';
-
   const progress = document.getElementById('uploadProgress');
   const bar = document.getElementById('uploadProgressBar');
   progress.style.display = 'block';
-
-  // Animate progress
   let pct = 0;
-  const interval = setInterval(() => {
-    pct = Math.min(pct + 10, 85);
-    bar.style.width = pct + '%';
-  }, 150);
-
+  const interval = setInterval(() => { pct = Math.min(pct+10, 85); bar.style.width = pct+'%'; }, 150);
   try {
-    // Upload to Supabase Storage
     const fileName = `${Date.now()}_${selectedFile.name.replace(/\s/g,'_')}`;
     const uploadRes = await fetch(`${SUPABASE_URL}/storage/v1/object/comprovantes/${fileName}`, {
-      method: 'POST',
-      headers: {
-        'apikey': SUPABASE_KEY,
-        'Authorization': `Bearer ${SUPABASE_KEY}`,
-        'Content-Type': selectedFile.type,
-      },
+      method:'POST',
+      headers:{'apikey':SUPABASE_KEY,'Authorization':`Bearer ${SUPABASE_KEY}`,'Content-Type':selectedFile.type},
       body: selectedFile
     });
-
     clearInterval(interval);
-
     if (!uploadRes.ok) throw new Error('Upload falhou');
-
     bar.style.width = '100%';
     const comprovanteUrl = `${SUPABASE_URL}/storage/v1/object/public/comprovantes/${fileName}`;
-
-    // Update database
     await incrementar(currentId, comprovanteUrl);
     currentId = null;
-
     setTimeout(() => {
       document.getElementById('step2').style.display = 'none';
       document.getElementById('step3').className = 'modal-confirm show';
     }, 400);
-
   } catch(e) {
     clearInterval(interval);
     bar.style.width = '0%';
@@ -410,11 +393,7 @@ async function confirmarPresente() {
     btn.disabled = false;
     btn.textContent = 'Erro ao enviar. Tente novamente.';
     btn.style.background = '#c0392b';
-    setTimeout(() => {
-      btn.textContent = 'Confirmar presente';
-      btn.style.background = '';
-      btn.disabled = false;
-    }, 3000);
+    setTimeout(() => { btn.textContent = 'Confirmar presente'; btn.style.background = ''; btn.disabled = false; }, 3000);
   }
 }
 
